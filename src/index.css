@@ -1,0 +1,342 @@
+@import "@fontsource/hanken-grotesk/400.css";
+@import "@fontsource/hanken-grotesk/500.css";
+@import "@fontsource/hanken-grotesk/600.css";
+@import "@fontsource/hanken-grotesk/700.css";
+@import "@fontsource/hanken-grotesk/800.css";
+@import "tailwindcss";
+
+/* Zero-CLS metric fallback matching Hanken Grotesk proportions */
+@font-face {
+  font-family: "Hanken Fallback";
+  src: local("Arial"), local("Helvetica Neue"), local("Roboto");
+  size-adjust: 97%;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
+@theme {
+  --font-sans: "Hanken Grotesk", "Hanken Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   Site-Wide Theme Custom Properties (Light & Storm)
+   ========================================================================== */
+
+:root,
+:root[data-theme="light"] {
+  --bg: #FFFFFF;
+  --bg-alt: #F5F7FB;
+  --surface: #FFFFFF;
+  --surface-2: #F5F7FB;
+  --surface-hover: #F5F7FB;
+  --hairline: #E5E7EB;
+
+  --text: #0A0A0F;
+  --text-muted: #4B5563;
+  --text-subtle: #525B68;
+
+  --brand: #0047AB;
+  --brand-hover: #00388A;
+  --brand-hi: #1F6BFF;
+  --brand-text: #0047AB;
+  --brand-tint: #EFF6FF;
+  --brand-border: rgba(0, 71, 171, 0.22);
+
+  --green-900: #ECFDF5;
+  --green-700: #047857;
+  --green-500: #059669;
+  --green-300: #059669;
+  --green-100: #047857;
+  --green-border: rgba(5, 150, 105, 0.25);
+
+  --maint-bg: #FFF1EA;
+  --maint-border: rgba(255, 106, 31, 0.30);
+  --maint-icon: #FF6A1F;
+  --maint-text: #9A3412;
+
+  --danger-bg: #FEE2E2;
+  --danger-border: rgba(177, 18, 43, 0.25);
+  --danger-text: #B1122B;
+
+  --card-shadow: 0 1px 2px rgba(10, 10, 15, 0.04), 0 8px 24px rgba(10, 10, 15, 0.03);
+  --card-shadow-md: 0 2px 6px rgba(10, 10, 15, 0.05), 0 14px 32px rgba(10, 10, 15, 0.06);
+
+  --scene-bg: #F5F7FB;
+  --cloud-a: #E8EEF7;
+  --cloud-b: #DDE6F3;
+  --chip-bg: #FFFFFF;
+}
+
+:root[data-theme="storm"] {
+  --bg: #0A0E11;
+  --bg-alt: #0F1519;
+  --surface: #131B20;
+  --surface-2: #1A242A;
+  --surface-hover: #1A242A;
+  --hairline: #26323A;
+
+  --text: #EAF0F3;
+  --text-muted: #A3B1BA;
+  --text-subtle: #8E9DA7;
+
+  --brand: #0047AB;
+  --brand-hover: #00388A;
+  --brand-hi: #4C8DFF;
+  --brand-text: #4C8DFF;
+  --brand-tint: #132236;
+  --brand-border: rgba(76, 141, 255, 0.34);
+
+  --green-900: #0F2A1A;
+  --green-700: #1E4D2B;
+  --green-500: #2F7D3F;
+  --green-300: #62D26F;
+  --green-100: #D8F7DC;
+  --green-border: #2F7D3F;
+
+  --maint-bg: #231814;
+  --maint-border: rgba(255, 140, 77, 0.36);
+  --maint-icon: #FF8C4D;
+  --maint-text: #FFD5BD;
+
+  --danger-bg: #2D1418;
+  --danger-border: rgba(252, 165, 165, 0.32);
+  --danger-text: #FCA5A5;
+
+  --card-shadow: 0 1px 2px rgba(0, 0, 0, 0.40), 0 8px 24px rgba(0, 0, 0, 0.28);
+  --card-shadow-md: 0 2px 6px rgba(0, 0, 0, 0.45), 0 14px 34px rgba(0, 0, 0, 0.36);
+
+  --scene-bg: #0D1317;
+  --cloud-a: #1B252B;
+  --cloud-b: #232F36;
+  --chip-bg: #131B20;
+}
+
+@layer base {
+  html {
+    background-color: var(--bg);
+    color: var(--text);
+    scroll-behavior: auto;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+}
+
+/* White rounded contrast tile for unchanged crystal logo on dark Storm backgrounds */
+.brand-logo-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+:root[data-theme="storm"] .brand-logo-tile {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 6px;
+}
+
+/* Storm-only / Light-only helpers for static SVG dividers and atmospheric elements */
+.storm-only {
+  display: none;
+}
+:root[data-theme="storm"] .storm-only {
+  display: block;
+}
+.light-only {
+  display: block;
+}
+:root[data-theme="storm"] .light-only {
+  display: none;
+}
+
+.font-tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+.section-spacing {
+  padding-top: 88px;
+  padding-bottom: 88px;
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 152px;
+    padding-bottom: 152px;
+  }
+}
+
+.apple-card-flat {
+  background-color: var(--surface);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--card-shadow);
+}
+
+.btn-pill-primary {
+  background-color: var(--brand);
+  color: #FFFFFF;
+  border-radius: 9999px;
+  transition: transform 160ms ease, background-color 160ms ease;
+}
+
+.btn-pill-primary:hover {
+  background-color: var(--brand-hover);
+}
+
+.btn-pill-primary:active {
+  transform: scale(0.98);
+}
+
+.btn-pill-secondary {
+  background-color: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--hairline);
+  border-radius: 9999px;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.btn-pill-secondary:hover {
+  background-color: var(--surface-hover);
+  border-color: var(--text-subtle);
+}
+
+.btn-pill-secondary:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   Hero Scene Ambient Motion (<= 8 Light / <= 12 Storm concurrent loops)
+   ========================================================================== */
+
+@keyframes ambient-cloud-slow {
+  0% { transform: translate3d(-18px, 0, 0); }
+  50% { transform: translate3d(20px, 0, 0); }
+  100% { transform: translate3d(-18px, 0, 0); }
+}
+
+@keyframes ambient-cloud-mid {
+  0% { transform: translate3d(22px, 0, 0); }
+  50% { transform: translate3d(-20px, 0, 0); }
+  100% { transform: translate3d(22px, 0, 0); }
+}
+
+@keyframes ambient-cloud-fast {
+  0% { transform: translate3d(-14px, 0, 0); }
+  50% { transform: translate3d(16px, 0, 0); }
+  100% { transform: translate3d(-14px, 0, 0); }
+}
+
+@keyframes ambient-pine-sway {
+  0%, 100% { transform: rotate(-1.6deg); }
+  50% { transform: rotate(1.8deg); }
+}
+
+@keyframes ambient-bird-a {
+  0% { transform: translate3d(-45px, 4px, 0); opacity: 0.72; }
+  50% { transform: translate3d(135px, -10px, 0); opacity: 0.9; }
+  100% { transform: translate3d(310px, 2px, 0); opacity: 0.65; }
+}
+
+@keyframes ambient-bird-b {
+  0% { transform: translate3d(-35px, -2px, 0); opacity: 0.65; }
+  50% { transform: translate3d(115px, 6px, 0); opacity: 0.85; }
+  100% { transform: translate3d(275px, -6px, 0); opacity: 0.6; }
+}
+
+@keyframes ambient-lake-shimmer {
+  0%, 100% { transform: translate3d(0, 0, 0) scaleX(1); opacity: 0.55; }
+  50% { transform: translate3d(6px, 0, 0) scaleX(1.06); opacity: 0.88; }
+}
+
+@keyframes ambient-summit-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.22); opacity: 0.92; }
+}
+
+@keyframes storm-rain-fall {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-24px, 64px, 0); }
+}
+
+@keyframes storm-mist-a {
+  0% { transform: translate3d(-22px, 0, 0); opacity: 0.08; }
+  50% { transform: translate3d(22px, 0, 0); opacity: 0.13; }
+  100% { transform: translate3d(-22px, 0, 0); opacity: 0.08; }
+}
+
+@keyframes storm-mist-b {
+  0% { transform: translate3d(20px, 0, 0); opacity: 0.11; }
+  50% { transform: translate3d(-20px, 0, 0); opacity: 0.06; }
+  100% { transform: translate3d(20px, 0, 0); opacity: 0.11; }
+}
+
+@keyframes storm-ceiling-flicker {
+  0%, 88%, 100% { opacity: 0.03; }
+  91% { opacity: 0.07; }
+  94% { opacity: 0.035; }
+  96% { opacity: 0.065; }
+}
+
+@keyframes storm-bolt-flash {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  48% { opacity: 0.92; }
+  66% { opacity: 0.25; }
+  82% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+@keyframes storm-panel-flash {
+  0% { opacity: 0; }
+  18% { opacity: 0.10; }
+  45% { opacity: 0; }
+  68% { opacity: 0.06; }
+  100% { opacity: 0; }
+}
+
+.anim-cloud-slow { animation: ambient-cloud-slow 120s ease-in-out infinite; }
+.anim-cloud-mid { animation: ambient-cloud-mid 80s ease-in-out infinite; }
+.anim-cloud-fast { animation: ambient-cloud-fast 55s ease-in-out infinite; }
+.anim-pine-sway { transform-box: fill-box; transform-origin: 50% 95%; animation: ambient-pine-sway 10s ease-in-out infinite; }
+.anim-bird-a { animation: ambient-bird-a 28s linear infinite; }
+.anim-bird-b { animation: ambient-bird-b 34s linear infinite; animation-delay: -11s; }
+.anim-lake-shimmer { transform-box: fill-box; transform-origin: 50% 50%; animation: ambient-lake-shimmer 6.5s ease-in-out infinite; }
+.anim-summit-pulse { transform-box: fill-box; transform-origin: 50% 50%; animation: ambient-summit-pulse 3.6s ease-in-out infinite; }
+
+.anim-storm-rain { animation: storm-rain-fall 1.2s linear infinite; }
+.anim-storm-mist-a { animation: storm-mist-a 70s ease-in-out infinite; }
+.anim-storm-mist-b { animation: storm-mist-b 70s ease-in-out infinite; animation-delay: -32s; }
+.anim-storm-ceiling { animation: storm-ceiling-flicker 11s ease-in-out infinite; }
+.anim-storm-bolt { animation: storm-bolt-flash 120ms linear forwards; }
+.anim-storm-panel-flash { animation: storm-panel-flash 250ms ease-out forwards; }
+
+[data-ambient-paused="true"] [data-ambient],
+[data-ambient-paused="true"] [data-ambient] * {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-ambient],
+  .anim-cloud-slow,
+  .anim-cloud-mid,
+  .anim-cloud-fast,
+  .anim-pine-sway,
+  .anim-bird-a,
+  .anim-bird-b,
+  .anim-lake-shimmer,
+  .anim-summit-pulse,
+  .anim-storm-rain,
+  .anim-storm-mist-a,
+  .anim-storm-mist-b,
+  .anim-storm-ceiling,
+  .anim-storm-bolt,
+  .anim-storm-panel-flash {
+    animation: none !important;
+  }
+}
