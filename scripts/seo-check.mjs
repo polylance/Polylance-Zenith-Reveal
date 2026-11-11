@@ -78,12 +78,18 @@ if (jsonLdMatches.length === 0) {
   }
 }
 
-// 7. sitemap.xml & robots.txt
+// 7. sitemap.xml, robots.txt & llms.txt / llms-full.txt
 if (!fs.existsSync(path.join(distDir, 'sitemap.xml'))) {
   errors.push('Missing dist/sitemap.xml');
 }
 if (!fs.existsSync(path.join(distDir, 'robots.txt'))) {
   errors.push('Missing dist/robots.txt');
+}
+if (!fs.existsSync(path.join(distDir, 'llms.txt'))) {
+  errors.push('Missing dist/llms.txt');
+}
+if (!fs.existsSync(path.join(distDir, 'llms-full.txt'))) {
+  errors.push('Missing dist/llms-full.txt');
 }
 
 // 8. All <img> have alt attribute
@@ -99,11 +105,13 @@ if (!html.includes('What is PolyLance Zenith?')) {
   errors.push('Pre-rendered FAQ content missing from initial dist/index.html');
 }
 
-// 10. Verify generated favicon suite & manifest exist
+// 10. Verify generated favicon suite (including Google 48px/96px/192px multiples) & manifest exist
 for (const asset of [
   'favicon.ico',
   'favicon-16.png',
   'favicon-32.png',
+  'favicon-48.png',
+  'favicon-96.png',
   'apple-touch-icon.png',
   'android-chrome-192x192.png',
   'android-chrome-512x512.png',
@@ -113,6 +121,9 @@ for (const asset of [
   if (!fs.existsSync(path.join(distDir, asset))) {
     errors.push(`Missing dist/${asset}`);
   }
+}
+if (!/sizes=["']48x48["']/i.test(html) || !/sizes=["']192x192["']/i.test(html)) {
+  errors.push('Missing 48x48 or 192x192 favicon link in dist/index.html');
 }
 
 // 11. IP Guardrail: Zero forbidden terms across source, build HTML, and maintenance HTML

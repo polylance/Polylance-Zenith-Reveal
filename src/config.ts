@@ -159,7 +159,7 @@ export const FAQ_ITEMS: FAQItem[] = [
   {
     question: "What is PolyLance Zenith?",
     answer:
-      "PolyLance Zenith (formerly PolyLance) is a freelancing protocol on Polygon. Clients fund milestone escrow in USDC or POL, freelancers get paid when work is approved, and reputation lives in your own wallet.",
+      "PolyLance Zenith (formerly PolyLance at polylance.codes) is a Web3 decentralized freelancing protocol on the Polygon blockchain—distinct from coding tools like Pylance. Clients fund non-custodial milestone escrow in USDC or POL, freelancers get paid when work is approved, and reputation lives in your own wallet.",
   },
   {
     question: "Why the new name?",

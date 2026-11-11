@@ -88,6 +88,16 @@ await sharp(sourceBuffer)
   .png({ compressionLevel: 9, palette: true })
   .toFile(path.join(publicDir, 'favicon-32.png'));
 
+await sharp(sourceBuffer)
+  .resize(48, 48, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+  .png({ compressionLevel: 9, adaptiveFiltering: true })
+  .toFile(path.join(publicDir, 'favicon-48.png'));
+
+await sharp(sourceBuffer)
+  .resize(96, 96, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+  .png({ compressionLevel: 9, adaptiveFiltering: true })
+  .toFile(path.join(publicDir, 'favicon-96.png'));
+
 // 3. Apple touch icon (180x180, padded onto solid white tile for opaque iOS corners)
 const appleInner = await sharp(sourceBuffer)
   .resize(140, 140, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
@@ -191,8 +201,41 @@ const manifest = {
 };
 fs.writeFileSync(path.join(publicDir, 'manifest.webmanifest'), JSON.stringify(manifest, null, 2), 'utf8');
 
-// 7. robots.txt
-const robotsTxt = `User-agent: *
+// 7. robots.txt (Explicitly welcome Google, Bing, Image crawlers, and AI answer engines)
+const robotsTxt = `User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: *
 Allow: /
 
 Sitemap: https://polylancezenith.com/sitemap.xml

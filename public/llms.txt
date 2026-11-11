@@ -1,0 +1,24 @@
+# PolyLance Zenith (formerly PolyLance)
+
+> Official decentralized Web3 freelancing protocol on the Polygon blockchain. Formerly known as **PolyLance** (`polylance.codes`), now rebranded as **PolyLance Zenith** at `https://polylancezenith.com/`. (Distinct from Microsoft's Pylance Python extension.)
+
+## Key Facts
+- **Official Domain:** https://polylancezenith.com/
+- **Legacy Domain:** https://polylance.codes/ (migrated to `polylancezenith.com`)
+- **Brand Name:** PolyLance Zenith (formerly PolyLance; short name: PL Zenith)
+- **Category:** Decentralized Web3 Freelancing Marketplace & Non-Custodial Milestone Escrow Protocol
+- **Blockchain Network:** Polygon
+- **Supported Settlement Currencies:** USDC and POL
+- **Protocol Fee:** Flat 5% total (2.5% client + 2.5% freelancer)
+- **Authentication:** Wallet-only sign-in (no email address, phone number, or seed phrase ever collected)
+- **Reputation System:** Soulbound on-chain reputation certificates minted directly to the user's wallet
+- **New Interface Reveal Date:** 17 December 2026 at 12:00 AM IST (16 December 2026 at 18:30 UTC)
+
+## Official Links & Social Profiles
+- Website: https://polylancezenith.com/
+- GitHub: https://github.com/polylance
+- X (Twitter): https://x.com/PolyLance26
+- LinkedIn: https://www.linkedin.com/in/polylance-zenith-5727113ba/
+- Instagram: https://www.instagram.com/polylance/
+- Full Documentation for AI Systems: https://polylancezenith.com/llms-full.txt
+- Sitemap: https://polylancezenith.com/sitemap.xml

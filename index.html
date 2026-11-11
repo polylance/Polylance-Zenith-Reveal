@@ -22,12 +22,17 @@
     <!-- Synchronous pre-paint theme initialization to prevent theme flash under strict CSP -->
     <script src="/theme-init.js"></script>
 
-    <!-- Icons & Manifest -->
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <!-- Icons & Manifest (includes 48x48 / 96x96 / 192x192 multiples for Google & search engines) -->
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="alternate" type="text/plain" title="PolyLance Zenith LLMs.txt" href="/llms.txt" />
 
     <!-- Font Preloads placeholder (populated at build by prerender) -->
     <!-- FONT_PRELOADS -->
@@ -46,6 +51,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="PolyLance Zenith — New interface arriving 17 December 2026" />
+    <meta property="og:logo" content="https://polylancezenith.com/android-chrome-512x512.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
